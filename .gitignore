@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Council runs created while testing the plugin inside its own folder
+.council/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

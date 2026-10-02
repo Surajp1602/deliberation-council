@@ -1,0 +1,15 @@
+{
+  "name": "deliberation-council",
+  "description": "The Deliberation Council plugin for Claude Code: an eight-seat multi-agent council that researches, designs, attacks, tests and converges on hard problems within a hard budget.",
+  "owner": {
+    "name": "Suraj Pawar",
+    "url": "https://github.com/Surajp1602"
+  },
+  "plugins": [
+    {
+      "name": "council",
+      "source": "./",
+      "description": "An eight-seat deliberation council with blind research and design, adversarial rounds, a hard agent-run budget, an independent audit and a traceable decision package."
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "council/entry.schema.json",
+  "type": "object",
+  "required": [
+    "seat",
+    "entry_id",
+    "position",
+    "confidence",
+    "statements",
+    "objections",
+    "objection_updates",
+    "resources_used"
+  ],
+  "properties": {
+    "seat": {
+      "type": "string"
+    },
+    "entry_id": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "new_information": {
+      "type": "string"
+    },
+    "writeup": {
+      "type": "string"
+    },
+    "statements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "kind"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "fact",
+              "inference",
+              "assumption",
+              "speculation",
+              "recommendation"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rests_on": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "load_bearing": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "type",
+          "locator",
+          "reliability"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "paper",
+              "documentation",
+              "standard",
+              "dataset",
+              "report",
+              "book",
+              "expert_source",
+              "web",
+              "tool",
+              "api",
+              "mcp_server",
+              "plugin",
+              "skill",
+              "model",
+              "library",
+              "workflow",
+              "other"
+            ]
+          },
+          "locator": {
+            "type": "string"
+          },
+          "reliability": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "relevance": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "cost": {
+            "type": "string"
+          },
+          "limitation": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "supports": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contradicts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "evidence_verdicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "evidence",
+          "verified"
+        ],
+        "properties": {
+          "evidence": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "reliability": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "summary"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "doc": {
+            "type": "string"
+          },
+          "change_note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "retired_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "reason"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "objections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "target",
+          "severity",
+          "claim",
+          "would_change",
+          "resolves_if"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "claim": {
+            "type": "string"
+          },
+          "would_change": {
+            "type": "string"
+          },
+          "resolves_if": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "objection_updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "objection",
+          "action",
+          "note"
+        ],
+        "properties": {
+          "objection": {
+            "type": "string"
+          },
+          "action": {
+            "enum": [
+              "maintain",
+              "withdraw",
+              "resolve",
+              "reopen",
+              "mitigate",
+              "accept_risk",
+              "downgrade"
+            ]
+          },
+          "basis": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "severity": {
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "hypothesis",
+          "method",
+          "targets",
+          "result"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "hypothesis": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          },
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "result": {
+            "enum": [
+              "pass",
+              "fail",
+              "inconclusive",
+              "designed",
+              "not_run"
+            ]
+          },
+          "detail": {
+            "type": "string"
+          },
+          "artifact": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "targets_reviewed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "route_to": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "resources_used": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "type",
+          "purpose"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "tool",
+              "skill",
+              "mcp_server",
+              "plugin",
+              "web",
+              "file",
+              "model",
+              "dataset",
+              "other"
+            ]
+          },
+          "purpose": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

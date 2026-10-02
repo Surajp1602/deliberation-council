@@ -1,0 +1,14 @@
+{
+  "name": "council",
+  "displayName": "Deliberation Council",
+  "version": "0.1.0",
+  "description": "An eight-seat multi-agent deliberation council. Specialised agents research a hard problem blind, design competing solutions, attack and test them, and converge inside a hard agent-run budget into an audited, traceable decision package.",
+  "author": {
+    "name": "Suraj Pawar",
+    "url": "https://github.com/Surajp1602"
+  },
+  "homepage": "https://github.com/Surajp1602/deliberation-council",
+  "repository": "https://github.com/Surajp1602/deliberation-council",
+  "license": "MIT",
+  "keywords": ["multi-agent", "deliberation", "council", "decision-making", "red-team", "workflow"]
+}
